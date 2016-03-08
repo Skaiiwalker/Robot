@@ -11,6 +11,8 @@ public class LukeBotController
 	private int xPosition, yPosition;
 	private long waitTime;
 	
+	private EV3Robot lukeBot;
+	
 	public LukeBotController()
 	{
 		this.xPosition = 50;
@@ -18,11 +20,14 @@ public class LukeBotController
 		this.waitTime = 4000;
 		this.message = "Something about a robot";
 		
+		lukeBot = new EV3Robot();
 	}
 	
 	public void start()
 	{
 		LCD.drawString(message, xPosition, yPosition);
+		Delay.msDelay(waitTime);
+		lukeBot.driveRoom();
 	}
 
 	public String getMessage() 
